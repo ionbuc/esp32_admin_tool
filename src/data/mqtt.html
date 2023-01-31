@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="es"> <!--<![endif]-->
+<!-- BEGIN HEAD-->
+<head>
+   
+     <meta charset="UTF-8" />
+    <title>AdminTools | MQTT</title>
+     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="Buchán" />
+
+    <link rel="icon" href="ESP32U.jpg" type="image/x-icon">
+     <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <!-- GLOBAL STYLES -->
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="bootstrap.css" />
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="MoneAdmin.css" />
+    <link rel="stylesheet" href="font-awesome.css" />
+    <link rel="stylesheet" href="bootstrap-switch.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <!--END GLOBAL STYLES -->
+
+       <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+</head>
+    <!-- END  HEAD-->
+    <!-- BEGIN BODY-->
+<body class="padTop53 " >
+
+     <!-- MAIN WRAPPER -->
+    <div id="wrap">
+
+         <!-- HEADER SECTION -->
+        <div id="top">
+
+            <nav class="navbar navbar-inverse navbar-fixed-top " style="padding-top: 10px;">
+                <a data-original-title="Show/Hide Menu" data-placement="bottom" data-tooltip="tooltip" class="accordion-toggle btn btn-primary btn-sm visible-xs" data-toggle="collapse" href="#menu" id="menu-toggle">
+                    <i class="icon-align-justify"></i>
+                </a>
+                <!-- LOGO SECTION -->
+                <header class="navbar-header">
+
+                    <a href="index.html" class="navbar-brand">
+                    <img src="Logo.png" alt="" /></a>
+                </header>
+                <!-- END LOGO SECTION -->
+                <ul class="nav navbar-top-links navbar-right">
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="icon-user "></i>&nbsp; <i class="icon-chevron-down "></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                            <li><a href="#"><i class="icon-user"></i> User </a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#"><i class="icon-signout"></i> Logout </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--END ADMIN SETTINGS -->
+                </ul>
+            </nav>
+        </div>
+       <div id="left">
+            <div class="media user-media well-small">
+                <a class="user-link" href="/">
+                    <img class="media-object img-thumbnail user-img" alt="User Picture" src="ESP32U.jpg" />
+                </a>
+                <br />
+                <div class="media-body">
+                    <h5 class="media-heading"> ESP32</h5>
+                    <ul class="list-unstyled user-info">               
+                        <li>
+                             <a class="btn btn-success btn-xs btn-circle" style="width: 10px;height: 12px;"></a> Online                           
+                        </li>                       
+                    </ul>
+                </div>
+                <br />
+            </div>
+            <ul id="menu" class="collapse">                
+                <li class="panel">
+                    <a href="#" >
+                        <i class="icon-th-large"></i> Dashboard	                          
+                    </a>                   
+                </li>
+                <li class="panel">
+                    <a href="esp_wifi" >
+                        <i class="icon-signal"></i> WIFI	                          
+                    </a>                   
+                </li>
+                <li class="panel active">
+                    <a href="esp-mqtt" >
+                        <i class="icon-sitemap"></i> MQTT	                          
+                    </a>                   
+                </li>
+                <li class="panel ">
+                    <a href="#" data-parent="#menu" data-toggle="collapse" class="accordion-toggle" data-target="#component-nav">
+                        <i class="icon-cog"> </i> Administrar    
+	   
+                        <span class="pull-right">
+                          <i class="icon-angle-left"></i>
+                        </span>
+                    </a>
+                    <ul class="collapse" id="component-nav">
+                       
+                        <li class=""><a href="esp-devices"><i class="icon-angle-right"></i> Dispositivo </a></li>
+                         <li class=""><a href="esp-restore"><i class="icon-angle-right"></i> Ajustes predeterminados de fábrica </a></li>
+                        <li class=""><a href="esp-restart"><i class="icon-angle-right"></i> Reinicio </a></li>
+                        <li class=""><a href="esp-admin"><i class="icon-angle-right"></i> Contraseña </a></li>
+                        
+                    </ul>
+                </li>
+                <li class="panel">
+                    <a href="esp-logout" >
+                        <i class="icon-signout"></i> Salir	                          
+                    </a>                   
+                </li>                                                                                               
+                                
+            </ul>
+
+        </div>
+        <div id="content">
+
+            <div class="inner" style="min-height:1200px;">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Configuración del Broker MQTT</h2>
+                    </div>
+                </div>
+                <hr>  <hr />
+                <div class="col-lg-12">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <i class="icon-sitemap"></i> Broker MQTT                        
+                        </div>
+                        
+                        <div class="panel-body">
+                            <br>
+                            <form class="form-horizontal">
+                                                                               
+                                    <div class="form-group">
+                                        <label for="mqtt_enable" class="control-label col-lg-3">Conexión MQTT:</label>
+                                        <div class="col-lg-5">
+                                            <div class="make-switch switch-mini" data-on="primary" data-off="danger">
+                                                <input type="checkbox" id="mqtt_enable"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form_mqtt_id">
+                                        <label for="mqtt_id" class="control-label col-lg-3">Client ID MQTT Broker :</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" id="mqtt_id" name="mqtt_id" value="ESP32" data-expresion="TextNumber" placeholder="Client ID MQTT Broker" class="form-control mqtt">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form_mqtt_user">
+                                        <label for="mqtt_user" class="control-label col-lg-3">Usuario MQTT Broker :</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" id="mqtt_user" name="mqtt_user" value="ionbuc" data-expresion="TextUnderscore" placeholder="Usuario MQTT" class="form-control mqtt">
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form_mqtt_passw">
+                                        <label for="mqtt_passw" class="control-label col-lg-3">Contraseña MQTT Broker:</label>
+                                        <div class="col-lg-5">
+                                            <input type="password" id="mqtt_passw" name="mqtt_passw" data-expresion="TextNumberPassw" placeholder="*********" class="form-control mqtt">
+ 
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form_mqtt_server">
+                                        <label for="mqtt_server" class="control-label col-lg-3">Servidor MQTT :</label>
+                                        <div class="col-lg-5">
+                                            <input type="text" id="mqtt_server" name="mqtt_server" value="ionbuc.ml" data-expresion="Dominio" placeholder="Servidor MQTT" class="form-control mqtt">
+
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form_mqtt_port">
+                                        <label for="mqtt_port" class="control-label col-lg-3">Puerto Servidor MQTT :</label>
+                                        <div class="col-lg-5">
+                                            <input type="number" id="mqtt_port" name="mqtt_port" value="1883" data-expresion="ServerPort" placeholder="Puerto Servidor MQTT" class="form-control mqtt">
+                                           
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="form_mqtt_time">
+                                        <label for="mqtt_time" class="control-label col-lg-3">Publish cada (min) :</label>
+                                        <div class="col-lg-5">
+                                            <input type="number" id="mqtt_time" name="mqtt_time" value="1" placeholder="Tiempo en Minutos" class="form-control mqtt">
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label for="#" class="control-label col-lg-3"></label>
+                                        <div class="col-lg-5">
+                                            <button class="btn btn-primary" type="submit"><i class="icon-save icon-white"></i>
+                                                Guardar</button>
+                                        </div>
+                                    </div>
+                                                                                                                                                                                                                                                                                                                             
+                                
+                                
+                                
+                                                                                                                                                                                                                              
+                            </form>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+       <!--END PAGE CONTENT -->
+
+         <!-- END RIGHT STRIP  SECTION -->
+    </div>
+     <!--END MAIN WRAPPER -->
+   <!-- FOOTER -->
+    <div id="footer">
+        <p>&copy;  Ionbuc.ml &nbsp;2023 &nbsp; v1.0.0</p>
+    </div>
+    <!--END FOOTER -->
+     <!-- GLOBAL SCRIPTS -->
+    <script src="jquery-2.0.3.min.js"></script>
+     <script src="bootstrap.min.js"></script>
+    <script src="modernizr-2.6.2.min.js"></script>
+    <script src="bootstrap-switch.min.js"></script>
+    <script src="script.js"></script>
+    <!-- END GLOBAL SCRIPTS -->
+</body>
+    <!-- END BODY-->
+    
+</html>
